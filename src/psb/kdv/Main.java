@@ -96,7 +96,7 @@ public class Main {
                             bb = true;
                             CostAmount = (Leftover + LeftoverWBWH) * CostPrice;
                             sbbb.append(CostAmount).append(";").append(BBrand).append(";").append(AArticulWB).append(";")
-                                    .append(LeftoverWBWH).append("\n");
+                                    .append(LeftoverWBWH).append(strDate).append("\n");
 //
 //                            stringBuilder.append(Articul).append(";").append(Name).append(";").append(Leftover).append(";")
 //                                    .append(CostPrice).append(";").append(CostAmount).append(";").append(BBrand).append(";")
