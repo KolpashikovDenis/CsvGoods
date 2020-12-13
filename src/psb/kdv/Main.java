@@ -1,17 +1,11 @@
 package psb.kdv;
 
-import common.FileNames;
-import jdk.internal.util.xml.impl.Input;
-
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -52,8 +46,6 @@ public class Main {
         }
         Collections.reverse(countsList);
 
-        System.out.println(mwbList.get(0));
-//        String header = "Articul;Name;Leftover;CostPrice;Brand;Barcode;ArticulWB;LeftoverWBMH;CostAmount\n";
         String header1= "Articul;Name;Leftover;CostPrice;CostAmount;Brand;ArticulWB;LeftoverWBWH;Date\n";
 
         Date date = Calendar.getInstance().getTime();
@@ -105,7 +97,7 @@ public class Main {
                         }
                     }
                     if(!bb){
-                        sbbb.append("Нет данных;Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
+                        sbbb.append(CostAmount).append(";Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
                     }
                     sbb.append(sbbb);
                     sbbb.setLength(0);
@@ -113,19 +105,21 @@ public class Main {
                 }
             }
             if(!b){
-                sbb.append(Articul).append(";Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;")
-                        .append(strDate).append("\n");
+//                sbb.append(Articul).append(";Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
+                sbb.append(Articul).append(";").append(Name).append(";").append(Leftover).append(";").append(CostPrice).append(";")
+                        .append(CostAmount).append(";Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
             }
             stringBuilder.append(sbb);
             sbb.setLength(0);
             b = false;
         }
-        System.out.println(stringBuilder.toString());
+//        System.out.println(stringBuilder.toString());
+        System.out.println("Done.");
         date = Calendar.getInstance().getTime();
         dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         strDate = dateFormat.format(date);
         File fout = new File(String.valueOf(finalsDir)+"\\Consolidated"+strDate+".csv");
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fout), "windows-1251"));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fout), "utf-8"));
         bw.write(stringBuilder.toString());
         bw.flush();
         bw.close();
