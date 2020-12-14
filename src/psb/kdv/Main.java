@@ -73,7 +73,7 @@ public class Main {
                 String Brand = ss[0].trim();
                 String ArticulWB = ss[1].trim();
                 String NomenclatureWBMW = ss[2].trim();
-                String Barcode = ss[3].trim().length() > 0 ? ss[3].trim() : "Нет данных";
+//                String Barcode = ss[3].trim().length() > 0 ? ss[3].trim() : "Нет данных";
                 if(Articul.equals(NomenclatureWBMW)){
                     b = true;
                     sbb.append(Articul).append(";").append(Name).append(";").append(Leftover).append(";").append(CostPrice).append(";");
@@ -88,7 +88,7 @@ public class Main {
                             bb = true;
                             CostAmount = (Leftover + LeftoverWBWH) * CostPrice;
                             sbbb.append(CostAmount).append(";").append(BBrand).append(";").append(AArticulWB).append(";")
-                                    .append(LeftoverWBWH).append(strDate).append("\n");
+                                    .append(LeftoverWBWH).append(";").append(strDate).append("\n");
 //
 //                            stringBuilder.append(Articul).append(";").append(Name).append(";").append(Leftover).append(";")
 //                                    .append(CostPrice).append(";").append(CostAmount).append(";").append(BBrand).append(";")
@@ -105,7 +105,6 @@ public class Main {
                 }
             }
             if(!b){
-//                sbb.append(Articul).append(";Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
                 sbb.append(Articul).append(";").append(Name).append(";").append(Leftover).append(";").append(CostPrice).append(";")
                         .append(CostAmount).append(";Нет данных;Нет данных;Нет данных;").append(strDate).append("\n");
             }
